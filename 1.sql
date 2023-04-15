@@ -1,7 +1,4 @@
 SELECT *
-FROM dept_emp USE INDEX(PRIMARY)
-WHERE dept_no IN (
-    SELECT dept_no
-    FROM dpartments
-    WHERE dept_no BETWEEN 'd003' AND 'd005')
-AND emp_no=10001;
+FROM departments d
+    INNER JOIN dept_emp de USE INDEX(PARIMARY) ON de.dept_no=d.dept_no AND de.emp_no=10001
+WHERE d.dept_no BETWEEN 'd003' AND 'd005';
